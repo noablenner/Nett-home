@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nett'home — Nettoyage, débarras & vitrerie en Alsace et à Belfort</title>
+<meta name="description" content="Nett'home, entreprise locale de nettoyage à Schlierbach. Débarras d'encombrants, remise en état, entretien de copropriétés, vitrerie et nettoyage après chantier en Alsace et à Belfort." />
+<link rel="icon" href="assets/logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --navy:#0a1a33;
+  --navy-2:#122a4d;
+  --navy-3:#1c3a63;
+  --blue:#2f9fdd;
+  --blue-2:#57bdec;
+  --blue-soft:#a9dcf5;
+  --blue-glow:#7cc9f0;
+  --ink:#0d1b2e;
+  --muted:#5b6b80;
+  --line:#e5eef6;
+  --bg:#f2f8fd;
+  --bg-2:#e9f3fb;
+  --white:#ffffff;
+  --shadow-sm:0 4px 14px rgba(10,26,51,.06);
+  --shadow:0 18px 40px -18px rgba(10,26,51,.30);
+  --shadow-lg:0 40px 80px -30px rgba(10,26,51,.45);
+  --radius:22px;
+  --radius-lg:30px;
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Inter",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.font-head{font-family:"Poppins",system-ui,sans-serif;line-height:1.12;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:"Poppins";font-weight:600;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);background:rgba(47,159,221,.10);
+  padding:8px 15px;border-radius:100px;border:1px solid rgba(47,159,221,.18);
+}
+.section{padding:96px 0}
+.section-head{max-width:720px;margin:0 auto 54px;text-align:center}
+.section-head h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin:16px 0 14px}
+.section-head p{color:var(--muted);font-size:1.06rem}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:"Poppins";font-weight:600;font-size:.98rem;
+  padding:15px 26px;border-radius:100px;border:1.5px solid transparent;
+  cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,color .25s ease;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--navy);color:#fff;box-shadow:0 14px 30px -12px rgba(10,26,51,.7)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 22px 40px -14px rgba(10,26,51,.85);background:var(--navy-2)}
+.btn-ghost{background:rgba(255,255,255,.6);border-color:var(--blue-soft);color:var(--navy)}
+.btn-ghost:hover{transform:translateY(-3px);background:#fff;border-color:var(--blue)}
+.btn-blue{background:linear-gradient(120deg,var(--blue),var(--blue-2));color:#fff;box-shadow:0 16px 30px -12px rgba(47,159,221,.6)}
+.btn-blue:hover{transform:translateY(-3px);box-shadow:0 24px 44px -14px rgba(47,159,221,.75)}
+
+/* ---------- HEADER ---------- */
+header{position:sticky;top:0;z-index:60;transition:all .3s ease}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  margin:14px auto;padding:10px 14px 10px 18px;
+  background:rgba(255,255,255,.72);backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:100px;box-shadow:var(--shadow-sm);
+  transition:box-shadow .3s ease;
+}
+header.scrolled .nav{box-shadow:0 12px 30px -14px rgba(10,26,51,.35)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 6px 16px -6px rgba(10,26,51,.5)}
+.brand-txt strong{font-family:"Poppins";font-weight:700;font-size:1.14rem;color:var(--navy);display:block;line-height:1}
+.brand-txt span{font-size:.66rem;letter-spacing:.28em;color:var(--blue);font-weight:600;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{
+  font-family:"Poppins";font-weight:500;font-size:.94rem;color:var(--navy-2);
+  padding:9px 15px;border-radius:100px;transition:background .2s,color .2s;
+}
+.nav-links a:hover{background:rgba(47,159,221,.12);color:var(--blue)}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-phone{
+  display:inline-flex;align-items:center;gap:9px;font-family:"Poppins";font-weight:600;font-size:.92rem;
+  color:var(--navy);background:rgba(47,159,221,.1);padding:11px 18px;border-radius:100px;transition:background .2s,transform .2s;
+}
+.nav-phone:hover{background:rgba(47,159,221,.2);transform:translateY(-2px)}
+.nav-phone svg{width:16px;height:16px}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:10px}
+.burger span{width:24px;height:2.5px;background:var(--navy);border-radius:2px;transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:60px 0 90px;overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(900px 500px at 82% -8%,rgba(87,189,236,.30),transparent 60%),
+    radial-gradient(700px 500px at 4% 12%,rgba(47,159,221,.16),transparent 55%),
+    linear-gradient(180deg,#eef7fd,#f2f8fd);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.4rem,5.3vw,4rem);font-weight:800;color:var(--navy);margin:22px 0}
+.hero h1 .hl{position:relative;color:var(--blue);white-space:nowrap}
+.hero p.lead{font-size:1.14rem;color:var(--muted);max-width:520px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 26px}
+.hero-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:560px}
+.mini-card{
+  background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.9);
+  border-radius:16px;padding:14px 15px;font-size:.86rem;font-weight:600;color:var(--navy-2);
+  box-shadow:var(--shadow-sm);backdrop-filter:blur(6px);
+}
+.mini-card small{display:block;color:var(--blue);font-weight:700;font-size:.72rem;letter-spacing:.05em;margin-bottom:3px;text-transform:uppercase}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-contacts a{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);padding:10px 16px;border-radius:100px;font-weight:600;font-size:.9rem;color:var(--navy);box-shadow:var(--shadow-sm);transition:transform .2s,border-color .2s}
+.hero-contacts a:hover{transform:translateY(-2px);border-color:var(--blue)}
+.hero-contacts svg{width:15px;height:15px;color:var(--blue)}
+
+.hero-visual{position:relative}
+.hero-card{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  box-shadow:var(--shadow-lg);aspect-ratio:4/5;
+  border:6px solid #fff;
+}
+.hero-card img{width:100%;height:100%;object-fit:cover}
+.hero-card .glass{
+  position:absolute;left:0;right:0;bottom:0;padding:26px 26px 22px;
+  background:linear-gradient(180deg,transparent,rgba(6,17,34,.86));color:#fff;
+}
+.hero-card .glass small{color:var(--blue-glow);font-family:"Poppins";font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.7rem}
+.hero-card .glass h3{font-size:1.28rem;font-weight:700;margin:8px 0 6px}
+.hero-card .glass p{font-size:.9rem;color:#d7e6f2;display:flex;align-items:center;gap:8px}
+.hero-card .glass p svg{width:16px;height:16px;flex:0 0 auto}
+.badge-float{
+  position:absolute;background:#fff;border-radius:16px;padding:13px 16px;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:11px;font-weight:700;font-size:.9rem;color:var(--navy);
+}
+.badge-float .dot{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--blue),var(--blue-2));color:#fff}
+.badge-float .dot svg{width:20px;height:20px}
+.badge-1{top:24px;left:-26px;animation:floaty 5s ease-in-out infinite}
+.badge-2{bottom:120px;right:-24px;animation:floaty 6s ease-in-out infinite .8s}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.spark{position:absolute;width:14px;height:14px;background:var(--blue-glow);opacity:.5;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);
+  animation:twinkle 3.5s ease-in-out infinite}
+@keyframes twinkle{0%,100%{transform:scale(.6);opacity:.25}50%{transform:scale(1.1);opacity:.8}}
+
+/* ---------- TRUST STRIP ---------- */
+.strip{background:var(--navy);color:#fff;padding:22px 0}
+.strip-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px}
+.strip-item{display:flex;align-items:center;gap:11px;font-family:"Poppins";font-weight:500;font-size:.98rem;color:#dbe8f5}
+.strip-item svg{width:20px;height:20px;color:var(--blue-2)}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.about-copy h2{font-size:clamp(1.8rem,3.6vw,2.6rem);font-weight:800;color:var(--navy);margin:16px 0 18px}
+.about-copy p{color:var(--muted);font-size:1.05rem;margin-bottom:24px}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chip{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-weight:600;font-size:.92rem;color:var(--navy-2);box-shadow:var(--shadow-sm)}
+.chip .tick{flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--blue-2));display:grid;place-items:center}
+.chip .tick svg{width:15px;height:15px;color:#fff}
+.zone-card{
+  background:linear-gradient(160deg,var(--navy),var(--navy-3));color:#fff;border-radius:var(--radius-lg);
+  padding:38px 34px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+}
+.zone-card::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(87,189,236,.4),transparent 70%)}
+.zone-card .eyebrow{background:rgba(87,189,236,.16);color:var(--blue-glow);border-color:rgba(87,189,236,.3)}
+.zone-card h3{font-size:1.55rem;font-weight:700;margin:18px 0 8px}
+.zone-card .place{font-size:1.06rem;color:var(--blue-soft);font-weight:600;margin-bottom:26px}
+.zone-list{display:grid;gap:14px;position:relative;z-index:2}
+.zone-list div{display:flex;gap:13px;align-items:flex-start}
+.zone-list .ic{flex:0 0 auto;width:34px;height:34px;border-radius:11px;background:rgba(255,255,255,.1);display:grid;place-items:center}
+.zone-list .ic svg{width:18px;height:18px;color:var(--blue-glow)}
+.zone-list strong{display:block;font-family:"Poppins";font-weight:600;font-size:.98rem}
+.zone-list span{font-size:.86rem;color:#b9cbe0}
+
+/* ---------- MANAGER ---------- */
+.manager{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
+.manager-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:center}
+.manager-photo{position:relative}
+.manager-photo img{width:100%;border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);border:6px solid #fff;aspect-ratio:1/1;object-fit:cover;object-position:center 20%}
+.manager-tag{position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);background:#fff;border-radius:16px;padding:12px 22px;box-shadow:var(--shadow);text-align:center;white-space:nowrap}
+.manager-tag small{color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.68rem}
+.manager-tag strong{font-family:"Poppins";display:block;font-size:1.1rem;color:var(--navy)}
+.manager-copy h2{font-size:clamp(1.8rem,3.6vw,2.5rem);font-weight:800;color:var(--navy);margin:14px 0 18px}
+.manager-copy p{color:var(--muted);font-size:1.08rem;margin-bottom:22px}
+.manager-quote{border-left:4px solid var(--blue);padding-left:20px;font-style:italic;color:var(--navy-2);font-size:1.06rem}
+
+/* ---------- SERVICES ---------- */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;
+  box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease;
+}
+.svc::before{content:"";position:absolute;left:0;top:0;height:4px;width:0;background:linear-gradient(90deg,var(--blue),var(--blue-2));transition:width .4s ease}
+.svc:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
+.svc:hover::before{width:100%}
+.svc .ic{width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,rgba(47,159,221,.14),rgba(87,189,236,.2));display:grid;place-items:center;margin-bottom:18px;transition:.3s}
+.svc:hover .ic{background:linear-gradient(135deg,var(--blue),var(--blue-2))}
+.svc .ic svg{width:27px;height:27px;color:var(--blue);transition:.3s}
+.svc:hover .ic svg{color:#fff}
+.svc h3{font-size:1.16rem;font-weight:700;color:var(--navy);margin-bottom:9px}
+.svc p{color:var(--muted);font-size:.94rem;margin-bottom:16px}
+.svc .tag{display:inline-flex;align-items:center;gap:7px;font-family:"Poppins";font-weight:600;font-size:.8rem;color:var(--blue);letter-spacing:.02em}
+.svc .tag svg{width:14px;height:14px}
+
+/* ---------- REALISATIONS ---------- */
+.work{background:linear-gradient(180deg,var(--bg-2),var(--bg))}
+.work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.work-card{background:#fff;border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;border:1px solid var(--line)}
+.ba{position:relative;aspect-ratio:4/3;user-select:none;touch-action:pan-y;cursor:ew-resize;overflow:hidden}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.ba .ba-before{clip-path:inset(0 50% 0 0)}
+.ba-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(10,26,51,.15);z-index:3}
+.ba-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:var(--shadow);display:grid;place-items:center;color:var(--navy)}
+.ba-grip svg{width:22px;height:22px}
+.ba-lab{position:absolute;top:14px;z-index:2;font-family:"Poppins";font-weight:600;font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 13px;border-radius:100px;color:#fff;backdrop-filter:blur(4px)}
+.ba-lab.b{left:14px;background:rgba(10,26,51,.6)}
+.ba-lab.a{right:14px;background:linear-gradient(120deg,var(--blue),var(--blue-2))}
+.work-card .cap{padding:20px 24px 22px}
+.work-card .cap h3{font-size:1.18rem;font-weight:700;color:var(--navy);margin-bottom:5px}
+.work-card .cap p{color:var(--muted);font-size:.9rem;display:flex;align-items:center;gap:7px}
+.work-card .cap p svg{width:15px;height:15px;color:var(--blue)}
+
+/* ---------- REVIEWS ---------- */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px 28px;box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s}
+.rev:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.stars{display:flex;gap:3px;margin-bottom:16px}
+.stars svg{width:19px;height:19px;color:#f5b93b}
+.rev p{color:var(--navy-2);font-size:1.02rem;margin-bottom:22px}
+.rev .who{display:flex;align-items:center;gap:13px}
+.rev .av{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy-3));color:#fff;display:grid;place-items:center;font-family:"Poppins";font-weight:700;font-size:1.05rem}
+.rev .who strong{font-family:"Poppins";font-weight:600;color:var(--navy);display:block;font-size:1rem}
+.rev .who span{font-size:.82rem;color:var(--muted)}
+
+/* ---------- CONTACT ---------- */
+.contact{background:linear-gradient(160deg,var(--navy),#081426);color:#fff;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;top:-120px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(87,189,236,.28),transparent 70%)}
+.contact .section-head h2{color:#fff}
+.contact .section-head p{color:#c3d4e6}
+.contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:start;position:relative;z-index:2}
+.info-list{display:grid;gap:16px}
+.info-item{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:16px 18px;transition:background .25s,transform .25s}
+.info-item:hover{background:rgba(255,255,255,.1);transform:translateX(4px)}
+.info-item .ic{flex:0 0 auto;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--blue-2));display:grid;place-items:center}
+.info-item .ic svg{width:21px;height:21px;color:#fff}
+.info-item small{color:var(--blue-soft);text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;font-weight:700}
+.info-item strong{font-family:"Poppins";font-weight:600;font-size:1.02rem;display:block}
+.info-note{margin-top:22px;display:flex;gap:13px;align-items:center;color:#c3d4e6;font-size:.92rem;background:rgba(87,189,236,.1);border:1px solid rgba(87,189,236,.22);border-radius:14px;padding:15px 18px}
+.info-note svg{width:22px;height:22px;color:var(--blue-glow);flex:0 0 auto}
+.form-card{background:#fff;border-radius:var(--radius-lg);padding:34px 32px;box-shadow:var(--shadow-lg);color:var(--ink)}
+.form-card h3{font-size:1.3rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.form-card>p{color:var(--muted);font-size:.94rem;margin-bottom:22px}
+.field{margin-bottom:16px}
+.field label{display:block;font-family:"Poppins";font-weight:600;font-size:.86rem;color:var(--navy-2);margin-bottom:7px}
+.field input,.field textarea{
+  width:100%;font-family:"Inter";font-size:.98rem;color:var(--ink);
+  border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;background:#f8fbfe;transition:border-color .2s,box-shadow .2s;
+}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(47,159,221,.14);background:#fff}
+.field textarea{resize:vertical;min-height:120px}
+.form-card .btn{width:100%;margin-top:6px}
+
+/* ---------- FOOTER ---------- */
+footer{background:#06111f;color:#93a7bd;padding:64px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.foot-brand img{width:52px;height:52px;border-radius:50%}
+.foot-brand strong{font-family:"Poppins";font-weight:700;color:#fff;font-size:1.2rem;display:block;line-height:1}
+.foot-brand span{font-size:.66rem;letter-spacing:.24em;color:var(--blue-2);text-transform:uppercase}
+.foot-col p{font-size:.94rem;max-width:340px}
+.foot-col h4{color:#fff;font-family:"Poppins";font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.foot-col a{display:flex;align-items:center;gap:9px;padding:6px 0;font-size:.94rem;transition:color .2s}
+.foot-col a:hover{color:var(--blue-2)}
+.foot-col a svg{width:15px;height:15px;color:var(--blue-2)}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;padding-top:24px;font-size:.85rem}
+.foot-bottom nav{display:flex;flex-wrap:wrap;gap:18px}
+
+/* ---------- FLOATING CTA ---------- */
+.float-cta{position:fixed;right:22px;bottom:22px;z-index:70;box-shadow:0 20px 40px -12px rgba(10,26,51,.6);opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
+.float-cta.show{opacity:1;transform:translateY(0)}
+
+/* ---------- REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:960px){
+  .hero-grid,.about-grid,.manager-grid,.contact-grid{grid-template-columns:1fr}
+  .about-grid,.manager-grid{gap:44px}
+  .manager-photo{max-width:420px;margin:0 auto}
+  .svc-grid,.rev-grid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .badge-1{left:8px}.badge-2{right:8px}
+  .hero-card{aspect-ratio:16/13;max-width:520px;margin:0 auto}
+}
+@media (max-width:720px){
+  .section{padding:70px 0}
+  .nav-links,.nav-phone,.nav-cta .btn-primary{display:none}
+  .burger{display:flex}
+  .nav.open .nav-links{display:flex;position:absolute;top:74px;left:14px;right:14px;flex-direction:column;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:22px;padding:12px;box-shadow:var(--shadow);gap:2px}
+  .nav.open .nav-links a{padding:13px 16px}
+  .nav{position:relative}
+  .svc-grid,.rev-grid,.work-grid,.chips,.foot-grid{grid-template-columns:1fr}
+  .hero-mini{grid-template-columns:1fr}
+  .strip-inner{gap:12px 22px}
+  .float-cta{right:14px;bottom:14px;padding:13px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="top">
+  <div class="container">
+    <div class="nav" id="nav">
+      <a class="brand" href="#top">
+        <img src="assets/logo.jpg" alt="Logo Nett'home" />
+        <span class="brand-txt"><strong>Nett'home</strong><span>Alsace · Belfort</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="nav-phone" href="tel:+33633579563">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          06 33 57 95 63
+        </a>
+        <a class="btn btn-primary" href="#contact">Demander un devis</a>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <span class="spark" style="top:18%;left:12%"></span>
+  <span class="spark" style="top:64%;left:6%;animation-delay:1s"></span>
+  <span class="spark" style="top:30%;right:44%;animation-delay:2s"></span>
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          Interventions en Alsace et à Belfort
+        </span>
+        <h1 class="reveal d1">Votre partenaire <span class="hl">propreté</span> en Alsace &amp; Belfort</h1>
+        <p class="lead reveal d2">Nettoyage professionnel, entretien régulier, remise en état et interventions spécifiques pour particuliers, professionnels et copropriétés.</p>
+        <div class="hero-actions reveal d3">
+          <a class="btn btn-blue" href="#contact">Demander un devis
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="#contact">Nous contacter</a>
+        </div>
+        <div class="hero-mini reveal d3">
+          <div class="mini-card"><small>Entreprise</small>Locale, basée à Schlierbach</div>
+          <div class="mini-card"><small>Zone</small>Alsace &amp; Belfort</div>
+          <div class="mini-card"><small>Clients</small>Particuliers, pros &amp; copros</div>
+        </div>
+        <div class="hero-contacts reveal d3">
+          <a href="tel:+33633579563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 33 57 95 63</a>
+          <a href="mailto:nett.home68@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>nett.home68@gmail.com</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal d2">
+        <div class="hero-card">
+          <img src="assets/apres-4.jpg" alt="Sol carrelé nettoyé par Nett'home après travaux" />
+          <div class="glass">
+            <small>Service local</small>
+            <h3>Une entreprise sérieuse, réactive et proche de ses clients.</h3>
+            <p><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Demande de devis claire et rapide</p>
+          </div>
+        </div>
+        <div class="badge-float badge-1">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+          Propreté garantie
+        </div>
+        <div class="badge-float badge-2">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span>
+          Intervention rapide
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="strip">
+  <div class="container">
+    <div class="strip-inner">
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Devis personnalisé</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Réactivité</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>Service humain</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V7l6-4 6 4v14"/></svg>Pros &amp; particuliers</div>
+      <div class="strip-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Approche responsable</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="apropos">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <span class="eyebrow">Entreprise locale &amp; de confiance</span>
+        <h2>Une approche sérieuse, humaine et soignée pour chaque intervention.</h2>
+        <p>Nett'home est une entreprise de nettoyage basée à Schlierbach. Nous intervenons en Alsace et à Belfort avec une priorité simple : proposer un service fiable, réactif et propre, adapté aux besoins des particuliers, des professionnels et des copropriétés.</p>
+        <div class="chips">
+          <div class="chip"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Propreté garantie</div>
+          <div class="chip"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Intervention rapide</div>
+          <div class="chip"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Devis personnalisé</div>
+          <div class="chip"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Service humain &amp; réactif</div>
+          <div class="chip"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Solutions pros &amp; particuliers</div>
+          <div class="chip"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Approche soignée &amp; responsable</div>
+        </div>
+      </div>
+      <div class="zone-card reveal d2">
+        <span class="eyebrow">Zone d'intervention</span>
+        <h3>Proximité &amp; réactivité</h3>
+        <p class="place">Alsace · Belfort · Schlierbach et alentours</p>
+        <div class="zone-list">
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><div><strong>Entreprise de terrain</strong><span>Basée à Schlierbach, au plus près de vos besoins.</span></div></div>
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><strong>Contact direct &amp; simple</strong><span>Un échange humain dès votre première prise de contact.</span></div></div>
+          <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="4" y="9" width="16" height="12" rx="2"/></svg></span><div><strong>Suivi attentif</strong><span>Une relation de confiance durable avec chaque client.</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANAGER ============ -->
+<section class="section manager">
+  <div class="container">
+    <div class="manager-grid">
+      <div class="manager-photo reveal">
+        <img src="assets/tom.jpg" alt="Tom Podgora, gérant de Nett'home" />
+        <div class="manager-tag"><small>Gérant de Nett'home</small><strong>Tom Podgora</strong></div>
+      </div>
+      <div class="manager-copy reveal d2">
+        <span class="eyebrow">Le gérant</span>
+        <h2>Une présence de terrain et un suivi attentif.</h2>
+        <p>Tom Podgora est présent à chaque étape : il connaît le terrain, suit chaque intervention et met un point d'honneur à créer une relation de confiance durable avec chaque client.</p>
+        <blockquote class="manager-quote">« Un travail propre, une parole tenue et un client serein : c'est comme ça que je vois mon métier. »</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Services</span>
+      <h2>Des prestations claires, efficaces et adaptées à chaque besoin.</h2>
+      <p>Nous accompagnons aussi bien les besoins réguliers que les interventions spécifiques, avec une attention particulière portée à la qualité de finition et à la réactivité.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+  </div>
+</section>
+
+<!-- ============ REALISATIONS ============ -->
+<section class="section work" id="realisations">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Réalisations</span>
+      <h2>Le avant / après parle de lui-même.</h2>
+      <p>Découvrez quelques débarras, remises au propre et nettoyages après travaux réalisés par Nett'home. Glissez le curseur pour comparer.</p>
+    </div>
+    <div class="work-grid" id="workGrid"></div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section" id="avis">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Avis clients</span>
+      <h2>Ils nous font confiance.</h2>
+      <p>Des retours simples et sincères qui reflètent le sérieux, la réactivité et le soin apportés à chaque prestation Nett'home.</p>
+    </div>
+    <div class="rev-grid" id="revGrid"></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="background:rgba(87,189,236,.16);color:var(--blue-glow);border-color:rgba(87,189,236,.3)">Contact</span>
+      <h2>Parlons de votre besoin.</h2>
+      <p>Un besoin ponctuel, un entretien régulier ou une intervention spécifique ? Laissez-nous un message ou contactez-nous directement.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="info-list">
+          <a class="info-item" href="tel:+33633579563">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div><small>Téléphone</small><strong>06 33 57 95 63</strong></div>
+          </a>
+          <a class="info-item" href="mailto:nett.home68@gmail.com">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+            <div><small>Email</small><strong>nett.home68@gmail.com</strong></div>
+          </a>
+          <a class="info-item" href="https://maps.google.com/?q=3+allée+de+la+Hardt+68440+Schlierbach" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+            <div><small>Adresse</small><strong>3 allée de la Hardt, 68440 Schlierbach</strong></div>
+          </a>
+          <a class="info-item" href="https://instagram.com/nett.home" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+            <div><small>Instagram</small><strong>nett.home</strong></div>
+          </a>
+        </div>
+        <div class="info-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+          <span><strong style="color:#fff;font-family:Poppins">Réponse rapide</strong> — un échange simple et humain dès votre première prise de contact.</span>
+        </div>
+      </div>
+      <form class="form-card reveal d2" id="devisForm">
+        <h3>Demandez votre devis</h3>
+        <p>Expliquez-nous votre besoin, nous revenons vers vous rapidement.</p>
+        <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" placeholder="Votre nom" required /></div>
+        <div class="field"><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" placeholder="Votre numéro" /></div>
+        <div class="field"><label for="msg">Message</label><textarea id="msg" name="msg" placeholder="Expliquez votre besoin (lieu, type d'intervention, délai…)" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Envoyer ma demande
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">
+          <img src="assets/logo.jpg" alt="Logo Nett'home" />
+          <span><strong>Nett'home</strong><span>Vitrerie · Encombrant</span></span>
+        </div>
+        <p>Entreprise locale de nettoyage à Schlierbach, au service des particuliers, professionnels et copropriétés en Alsace et à Belfort.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="tel:+33633579563"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 33 57 95 63</a>
+        <a href="mailto:nett.home68@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>nett.home68@gmail.com</a>
+        <a href="https://instagram.com/nett.home" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg>@nett.home</a>
+      </div>
+      <div class="foot-col">
+        <h4>Navigation</h4>
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#avis">Avis</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Nett'home — Tous droits réservés.</span>
+      <nav>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">CGU</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<a class="btn btn-blue float-cta" id="floatCta" href="#contact">Demander un devis</a>
+
+<script>
+/* ---------- DATA ---------- */
+const services = [
+  {t:"Enlèvement d'encombrants",d:"Débarras rapide et organisé pour logements, caves, garages, locaux ou extérieurs.",i:'<path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6M14 11v6"/>'},
+  {t:"Entretien des copropriétés",d:"Nettoyage régulier des parties communes, halls, paliers et accès pour une image impeccable.",i:'<path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 9h.01M12 9h.01M15 9h.01M9 13h.01M12 13h.01M15 13h.01"/>'},
+  {t:"Bureaux, salles de sport & locaux",d:"Entretien soigné des espaces professionnels pour accueillir vos équipes et vos clients sereinement.",i:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/>'},
+  {t:"Remise en état",d:"Interventions après départ, sinistre léger, location ou période de forte sollicitation.",i:'<path d="M14.7 6.3a5 5 0 0 0-6.6 6.6l-5 5 2 2 5-5a5 5 0 0 0 6.6-6.6l-2.6 2.6-2-2 2.6-2.6z"/>'},
+  {t:"Diogène, Noé & après décès",d:"Prise en charge sérieuse, discrète et respectueuse des situations sensibles ou complexes.",i:'<path d="M12 21s-8-4.4-8-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.6-8 10-8 10z"/>'},
+  {t:"Vitrerie",d:"Nettoyage de vitres, baies vitrées, vitrines et surfaces transparentes avec un rendu net.",i:'<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h18M12 3v18"/>'},
+  {t:"Cages d'escalier",d:"Entretien des circulations et escaliers pour maintenir des espaces communs propres au quotidien.",i:'<path d="M3 20h4v-4h4v-4h4V8h4V4"/>'},
+  {t:"Terrains abandonnés",d:"Remise au propre d'espaces extérieurs délaissés avec tri, collecte et évacuation adaptée.",i:'<path d="M12 2v8M7 6l5-4 5 4M4 22c2-2 4-3 8-3s6 1 8 3M6 14c1.5-1 3-1.5 6-1.5s4.5.5 6 1.5"/>'},
+  {t:"Après chantier",d:"Nettoyage final après travaux, intervention ponctuelle ou besoin exceptionnel.",i:'<path d="M2 20h20M4 20V10l4-3 4 3 4-3 4 3v10"/><path d="M9 20v-4h6v4"/>'}
+];
+const works = [
+  {t:"Débarras de garage",s:"Tri, collecte et évacuation complète",b:"assets/avant-2.jpg",a:"assets/apres-2.jpg"},
+  {t:"Nettoyage après travaux",s:"Sol carrelé dégraissé et lustré",b:"assets/avant-4.jpg",a:"assets/apres-4.jpg"},
+  {t:"Remise au propre d'un espace encombré",s:"Débarras d'un sous-sol et de ses accès",b:"assets/avant-1.jpg",a:"assets/apres-1.jpg"},
+  {t:"Débarras & nettoyage d'atelier",s:"Local vidé, trié et remis au propre",b:"assets/apres-3.jpg",a:"assets/avant-3.jpg"}
+];
+const reviews = [
+  {n:"Diego Rodrigues",t:"Prestation au top. Tout était parfait, un grand merci à vous. Je recommande vivement !"},
+  {n:"Jonathan Rizzo",t:"Super entreprise, on les a consultés en sous-traitance ! Je referai appel à leurs services !"},
+  {n:"Anthony Behra",t:"Très bonne entreprise, professionnel et sérieux. Je recommande."}
+];
+
+/* ---------- RENDER ---------- */
+const svgWrap = p => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
+const star = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z"/></svg>';
+
+document.getElementById('svcGrid').innerHTML = services.map((s,i)=>`
+  <article class="svc reveal ${'d'+(i%3)}">
+    <div class="ic">${svgWrap(s.i)}</div>
+    <h3>${s.t}</h3>
+    <p>${s.d}</p>
+    <span class="tag">${svgWrap('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>')} Intervention sur devis</span>
+  </article>`).join('');
+
+document.getElementById('workGrid').innerHTML = works.map((w,i)=>`
+  <article class="work-card reveal ${'d'+(i%2)}">
+    <div class="ba" data-ba>
+      <img class="ba-after" src="${w.a}" alt="${w.t} — après" loading="lazy">
+      <img class="ba-before" src="${w.b}" alt="${w.t} — avant" loading="lazy">
+      <span class="ba-lab b">Avant</span>
+      <span class="ba-lab a">Après</span>
+      <div class="ba-handle"><span class="ba-grip">${svgWrap('<path d="M8 7 3 12l5 5M16 7l5 5-5 5"/>')}</span></div>
+    </div>
+    <div class="cap"><h3>${w.t}</h3><p>${svgWrap('<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>')}${w.s}</p></div>
+  </article>`).join('');
+
+document.getElementById('revGrid').innerHTML = reviews.map((r,i)=>`
+  <article class="rev reveal ${'d'+(i%3)}">
+    <div class="stars">${star.repeat(5)}</div>
+    <p>« ${r.t} »</p>
+    <div class="who"><span class="av">${r.n.split(' ').map(x=>x[0]).join('').slice(0,2)}</span><div><strong>${r.n}</strong><span>Client Nett'home</span></div></div>
+  </article>`).join('');
+
+/* ---------- BEFORE / AFTER SLIDER ---------- */
+document.querySelectorAll('[data-ba]').forEach(ba=>{
+  const before = ba.querySelector('.ba-before');
+  const handle = ba.querySelector('.ba-handle');
+  let dragging = false;
+  const set = pct => {
+    pct = Math.max(2, Math.min(98, pct));
+    before.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    handle.style.left = pct + '%';
+  };
+  const move = clientX => {
+    const r = ba.getBoundingClientRect();
+    set((clientX - r.left) / r.width * 100);
+  };
+  ba.addEventListener('pointerdown', e=>{dragging=true; ba.setPointerCapture(e.pointerId); move(e.clientX);});
+  ba.addEventListener('pointermove', e=>{ if(dragging) move(e.clientX); });
+  ba.addEventListener('pointerup', ()=>dragging=false);
+  ba.addEventListener('pointercancel', ()=>dragging=false);
+  set(50);
+});
+
+/* ---------- REVEAL ON SCROLL ---------- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- HEADER + FLOAT CTA ---------- */
+const header = document.getElementById('top');
+const floatCta = document.getElementById('floatCta');
+window.addEventListener('scroll', ()=>{
+  const y = window.scrollY;
+  header.classList.toggle('scrolled', y>20);
+  floatCta.classList.toggle('show', y>620);
+});
+
+/* ---------- MOBILE MENU ---------- */
+const nav = document.getElementById('nav');
+document.getElementById('burger').addEventListener('click', ()=>nav.classList.toggle('open'));
+nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+/* ---------- FORM (mailto) ---------- */
+document.getElementById('devisForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const nom = encodeURIComponent(this.nom.value.trim());
+  const tel = encodeURIComponent(this.tel.value.trim());
+  const msg = encodeURIComponent(this.msg.value.trim());
+  const body = `Nom : ${this.nom.value.trim()}%0D%0ATéléphone : ${this.tel.value.trim()}%0D%0A%0D%0A${this.msg.value.trim()}`;
+  window.location.href = `mailto:nett.home68@gmail.com?subject=${encodeURIComponent('Demande de devis — '+this.nom.value.trim())}&body=${body}`;
+});
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
