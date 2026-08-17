@@ -283,6 +283,10 @@ header.scrolled .nav{box-shadow:0 12px 30px -14px rgba(10,26,51,.35)}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(47,159,221,.14);background:#fff}
 .field textarea{resize:vertical;min-height:120px}
 .form-card .btn{width:100%;margin-top:6px}
+.form-status{margin-top:14px;font-size:.92rem;font-weight:600;text-align:center;display:none}
+.form-status.ok{display:block;color:#12855a;background:#e7f7ef;border:1px solid #b7e8cf;border-radius:12px;padding:12px 14px}
+.form-status.err{display:block;color:#c0392b;background:#fdecea;border:1px solid #f5c2bb;border-radius:12px;padding:12px 14px}
+.btn[disabled]{opacity:.65;cursor:progress}
 
 /* ---------- MAP ---------- */
 .map{background:linear-gradient(180deg,var(--bg),var(--bg-2))}
@@ -564,15 +568,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span><strong style="color:#fff;font-family:Poppins">Réponse rapide</strong> — un échange simple et humain dès votre première prise de contact.</span>
         </div>
       </div>
-      <form class="form-card reveal d2" id="devisForm">
+      <form class="form-card reveal d2" id="devisForm" action="https://formspree.io/f/mppaydor" method="POST">
         <h3>Demandez votre devis</h3>
         <p>Expliquez-nous votre besoin, nous revenons vers vous rapidement.</p>
         <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" type="text" placeholder="Votre nom" required /></div>
         <div class="field"><label for="tel">Téléphone</label><input id="tel" name="tel" type="tel" placeholder="Votre numéro" /></div>
-        <div class="field"><label for="msg">Message</label><textarea id="msg" name="msg" placeholder="Expliquez votre besoin (lieu, type d'intervention, délai…)" required></textarea></div>
-        <button type="submit" class="btn btn-primary">Envoyer ma demande
+        <div class="field"><label for="msg">Message</label><textarea id="msg" name="message" placeholder="Expliquez votre besoin (lieu, type d'intervention, délai…)" required></textarea></div>
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis — Nett'home" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <button type="submit" class="btn btn-primary" id="devisSubmit">Envoyer ma demande
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
         </button>
+        <p id="devisStatus" class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
   </div>
@@ -743,14 +750,39 @@ const nav = document.getElementById('nav');
 document.getElementById('burger').addEventListener('click', ()=>nav.classList.toggle('open'));
 nav.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
 
-/* ---------- FORM (mailto) ---------- */
-document.getElementById('devisForm').addEventListener('submit', function(e){
+/* ---------- FORM (Formspree AJAX) ---------- */
+const devisForm = document.getElementById('devisForm');
+const devisStatus = document.getElementById('devisStatus');
+const devisSubmit = document.getElementById('devisSubmit');
+devisForm.addEventListener('submit', async function(e){
   e.preventDefault();
-  const nom = encodeURIComponent(this.nom.value.trim());
-  const tel = encodeURIComponent(this.tel.value.trim());
-  const msg = encodeURIComponent(this.msg.value.trim());
-  const body = `Nom : ${this.nom.value.trim()}%0D%0ATéléphone : ${this.tel.value.trim()}%0D%0A%0D%0A${this.msg.value.trim()}`;
-  window.location.href = `mailto:nett.home68@gmail.com?subject=${encodeURIComponent('Demande de devis — '+this.nom.value.trim())}&body=${body}`;
+  devisStatus.className = 'form-status';
+  devisSubmit.disabled = true;
+  const original = devisSubmit.innerHTML;
+  devisSubmit.textContent = 'Envoi en cours…';
+  try{
+    const res = await fetch(devisForm.action, {
+      method:'POST',
+      body:new FormData(devisForm),
+      headers:{'Accept':'application/json'}
+    });
+    if(res.ok){
+      devisForm.reset();
+      devisStatus.textContent = 'Merci ! Votre demande a bien été envoyée. Nous vous recontactons rapidement.';
+      devisStatus.className = 'form-status ok';
+    }else{
+      const data = await res.json().catch(()=>({}));
+      const msg = (data.errors && data.errors.map(x=>x.message).join(', ')) || "Une erreur est survenue. Réessayez ou contactez-nous par téléphone.";
+      devisStatus.textContent = msg;
+      devisStatus.className = 'form-status err';
+    }
+  }catch(err){
+    devisStatus.textContent = "Envoi impossible pour le moment. Contactez-nous par téléphone ou email.";
+    devisStatus.className = 'form-status err';
+  }finally{
+    devisSubmit.disabled = false;
+    devisSubmit.innerHTML = original;
+  }
 });
 
 document.getElementById('year').textContent = new Date().getFullYear();
