@@ -259,7 +259,6 @@ header.scrolled .nav{box-shadow:0 12px 30px -14px rgba(10,26,51,.35)}
 /* ---------- CONTACT ---------- */
 .contact{background:linear-gradient(160deg,var(--navy),#081426);color:#fff;position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;top:-120px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(87,189,236,.28),transparent 70%)}
-.section.contact{padding-bottom:0}
 .contact .section-head h2{color:#fff}
 .contact .section-head p{color:#c3d4e6}
 .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:44px;align-items:start;position:relative;z-index:2}
@@ -324,7 +323,7 @@ footer{background:#06111f;color:#93a7bd;padding:64px 0 28px}
 /* ---------- CLIENTS MARQUEE ---------- */
 .clients{background:#fff;padding:78px 0;border-block:1px solid var(--line);overflow:hidden}
 .clients .section-head{margin-bottom:40px}
-.clients.navy{background:none;border:0;padding:78px 0 96px;position:relative}
+.clients.navy{background:none;border:0;padding:0 0 84px;position:relative}
 .clients.navy .section-head h2{color:#fff}
 .clients.navy .section-head p{color:#c3d4e6}
 .clients.navy .eyebrow{background:rgba(87,189,236,.16);color:var(--blue-glow);border-color:rgba(87,189,236,.3)}
@@ -343,7 +342,7 @@ a.client:hover,a.client:focus-visible{transform:scale(1.07);box-shadow:var(--sha
   .marquee-group{flex-wrap:wrap;justify-content:center;padding:0}
   .marquee-group[aria-hidden="true"]{display:none}
 }
-@media (max-width:720px){.clients,.clients.navy{padding:60px 0 70px}.client{width:170px;height:96px}}
+@media (max-width:720px){.clients,.clients.navy{padding:0 0 60px}.client{width:170px;height:96px}}
 
 
 /* ---------- REVEAL ---------- */
@@ -559,6 +558,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- ============ CONTACT ============ -->
 <section class="section contact" id="contact">
+<!-- ============ CLIENTS (dans la section contact : même fond continu, au-dessus du formulaire) ============ -->
+<div class="clients navy" id="clients">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Références</span>
+      <h2>Ils nous font confiance.</h2>
+      <p>Des professionnels de l'immobilier, du sport et de la rénovation nous confient l'entretien de leurs locaux.</p>
+    </div>
+  </div>
+  <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack"></div></div>
+</div>
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow" style="background:rgba(87,189,236,.16);color:var(--blue-glow);border-color:rgba(87,189,236,.3)">Contact</span>
@@ -610,17 +620,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-<!-- ============ CLIENTS (dans la section contact : même fond continu, aucune jointure) ============ -->
-<div class="clients navy" id="clients">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Références</span>
-      <h2>Ils nous font confiance.</h2>
-      <p>Des professionnels de l'immobilier, du sport et de la rénovation nous confient l'entretien de leurs locaux.</p>
-    </div>
-  </div>
-  <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack"></div></div>
-</div>
 </section>
 
 <!-- ============ MAP ============ -->
