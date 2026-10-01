@@ -557,7 +557,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ============ CLIENTS ============ -->
-<section class="clients" id="clients">
+<section class="clients navy" id="clients">
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Références</span>
@@ -566,17 +566,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
   <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack"></div></div>
-</section>
-
-<section class="clients navy" id="clients-2">
-  <div class="container">
-    <div class="section-head reveal">
-      <span class="eyebrow">Références</span>
-      <h2>Ils nous font confiance.</h2>
-      <p>Des professionnels de l'immobilier, du sport et de la rénovation nous confient l'entretien de leurs locaux.</p>
-    </div>
-  </div>
-  <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack2"></div></div>
 </section>
 
 <!-- ============ CONTACT ============ -->
@@ -774,7 +763,7 @@ const clientTile = (c,hidden) => {
 };
 // Chaque groupe répète la liste pour dépasser la largeur d'écran ; le 2e groupe est un clone pour la boucle sans coupure.
 const clientGroup = hidden => `<div class="marquee-group"${hidden?' aria-hidden="true"':''}>${[0,1].map(k=>clients.map(c=>clientTile(c,hidden||k)).join('')).join('')}</div>`;
-['clientTrack','clientTrack2'].forEach(id=>{ document.getElementById(id).innerHTML = clientGroup(false)+clientGroup(true); });
+document.getElementById('clientTrack').innerHTML = clientGroup(false)+clientGroup(true);
 
 /* ---------- BEFORE / AFTER SLIDER ---------- */
 document.querySelectorAll('[data-ba]').forEach(ba=>{
