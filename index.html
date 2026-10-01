@@ -320,6 +320,26 @@ footer{background:#06111f;color:#93a7bd;padding:64px 0 28px}
 .float-cta{position:fixed;right:22px;bottom:22px;z-index:70;box-shadow:0 20px 40px -12px rgba(10,26,51,.6);opacity:0;transform:translateY(20px);transition:opacity .4s,transform .4s}
 .float-cta.show{opacity:1;transform:translateY(0)}
 
+/* ---------- CLIENTS MARQUEE ---------- */
+.clients{background:#fff;padding:78px 0;border-block:1px solid var(--line);overflow:hidden}
+.clients .section-head{margin-bottom:40px}
+.marquee{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
+.marquee-group{display:flex;gap:22px;padding-right:22px}
+.client{flex:0 0 auto;width:210px;height:112px;display:flex;align-items:center;justify-content:center;padding:16px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s}
+.client.dark{background:var(--navy)}
+.client img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+a.client:hover,a.client:focus-visible{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blue-soft)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){
+  .marquee{-webkit-mask-image:none;mask-image:none}
+  .marquee-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center}
+  .marquee-group{flex-wrap:wrap;justify-content:center;padding:0}
+  .marquee-group[aria-hidden="true"]{display:none}
+}
+@media (max-width:720px){.clients{padding:60px 0}.client{width:170px;height:96px}}
+
 /* ---------- REVEAL ---------- */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
@@ -524,11 +544,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="section-head reveal">
       <span class="eyebrow">Avis clients</span>
-      <h2>Ils nous font confiance.</h2>
+      <h2>Ce que disent nos clients.</h2>
       <p>Des retours simples et sincères qui reflètent le sérieux, la réactivité et le soin apportés à chaque prestation Nett'home.</p>
     </div>
     <div class="rev-grid" id="revGrid"></div>
   </div>
+</section>
+
+<!-- ============ CLIENTS ============ -->
+<section class="clients" id="clients">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Références</span>
+      <h2>Ils nous font confiance.</h2>
+      <p>Des professionnels de l'immobilier, du sport et de la rénovation nous confient l'entretien de leurs locaux.</p>
+    </div>
+  </div>
+  <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack"></div></div>
 </section>
 
 <!-- ============ CONTACT ============ -->
@@ -677,6 +709,14 @@ const reviews = [
   {n:"Muriel Welsch",t:"Très réactif ! Très pro ! Je le recommande totalement !"},
   {n:"Anthony Behra",t:"Très bonne entreprise, professionnel et sérieux. Je recommande."}
 ];
+const clients = [
+  {n:"Ren'nova",img:"assets/clients/rennova.jpg"},
+  {n:"La Place Fitness",img:"assets/clients/la-place-fitness.webp",url:"https://laplacefitness.fr/"},
+  {n:"Immobilière de la Hardt",img:"assets/clients/immobiliere-de-la-hardt.png",url:"https://www.immo-hardt.com/"},
+  {n:"Altura Immobilier",img:"assets/clients/altura-immobilier.png",url:"https://www.alturaimmobilier.fr/"},
+  {n:"EG-PRO",img:"assets/clients/eg-pro.png"},
+  {n:"Node Flow & Solutions",img:"assets/clients/node-flow.png",dark:true}
+];
 
 /* ---------- RENDER ---------- */
 const svgWrap = p => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
@@ -708,6 +748,17 @@ document.getElementById('revGrid').innerHTML = reviews.map((r,i)=>`
     <p>« ${r.t} »</p>
     <div class="who"><span class="av">${r.n.split(' ').map(x=>x[0]).join('').slice(0,2)}</span><div><strong>${r.n}</strong><span>Client Nett'home</span></div></div>
   </article>`).join('');
+
+const clientTile = (c,hidden) => {
+  const img = `<img src="${c.img}" alt="${hidden?'':c.n}" loading="lazy" decoding="async">`;
+  const cls = 'client'+(c.dark?' dark':'');
+  return c.url
+    ? `<a class="${cls}" href="${c.url}" target="_blank" rel="noopener" ${hidden?'tabindex="-1" aria-hidden="true"':`aria-label="${c.n} (nouvel onglet)"`}>${img}</a>`
+    : `<div class="${cls}" ${hidden?'aria-hidden="true"':''}>${img}</div>`;
+};
+// Chaque groupe répète la liste pour dépasser la largeur d'écran ; le 2e groupe est un clone pour la boucle sans coupure.
+const clientGroup = hidden => `<div class="marquee-group"${hidden?' aria-hidden="true"':''}>${[0,1].map(k=>clients.map(c=>clientTile(c,hidden||k)).join('')).join('')}</div>`;
+document.getElementById('clientTrack').innerHTML = clientGroup(false)+clientGroup(true);
 
 /* ---------- BEFORE / AFTER SLIDER ---------- */
 document.querySelectorAll('[data-ba]').forEach(ba=>{
