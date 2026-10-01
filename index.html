@@ -323,12 +323,16 @@ footer{background:#06111f;color:#93a7bd;padding:64px 0 28px}
 /* ---------- CLIENTS MARQUEE ---------- */
 .clients{background:#fff;padding:78px 0;border-block:1px solid var(--line);overflow:hidden}
 .clients .section-head{margin-bottom:40px}
+.clients.navy{background:var(--navy);border-color:var(--navy-2)}
+.clients.navy .section-head h2{color:#fff}
+.clients.navy .section-head p{color:#c3d4e6}
+.clients.navy .eyebrow{background:rgba(87,189,236,.16);color:var(--blue-glow);border-color:rgba(87,189,236,.3)}
+.clients.navy .client{border-color:transparent}
 .marquee{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .marquee-track{display:flex;width:max-content;animation:marquee 38s linear infinite}
 .marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
 .marquee-group{display:flex;gap:22px;padding-right:22px}
 .client{flex:0 0 auto;width:210px;height:112px;display:flex;align-items:center;justify-content:center;padding:16px 22px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:transform .3s,box-shadow .3s,border-color .3s}
-.client.dark{background:var(--navy)}
 .client img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 a.client:hover,a.client:focus-visible{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--blue-soft)}
 @keyframes marquee{to{transform:translateX(-50%)}}
@@ -340,12 +344,6 @@ a.client:hover,a.client:focus-visible{transform:translateY(-4px);box-shadow:var(
 }
 @media (max-width:720px){.clients{padding:60px 0}.client{width:170px;height:96px}}
 
-/* ---------- CLIENTS BANDE BLEUE (variante fixe) ---------- */
-.clients-band{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-2) 100%);padding:56px 0;color:#fff}
-.clients-band h3{font-size:1.15rem;font-weight:700;text-align:center;margin-bottom:28px;letter-spacing:.02em}
-.clients-band .band-row{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
-.clients-band .client{width:174px;height:100px;border-color:transparent;box-shadow:0 14px 30px -14px rgba(10,26,51,.45)}
-@media (max-width:720px){.clients-band{padding:44px 0}.clients-band .client{width:calc(50% - 9px);height:92px}}
 
 /* ---------- REVEAL ---------- */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
@@ -570,11 +568,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack"></div></div>
 </section>
 
-<section class="clients-band" id="clients-band">
+<section class="clients navy" id="clients-2">
   <div class="container">
-    <h3 class="reveal">Ils nous font confiance</h3>
-    <div class="band-row reveal" id="clientBand"></div>
+    <div class="section-head reveal">
+      <span class="eyebrow">Références</span>
+      <h2>Ils nous font confiance.</h2>
+      <p>Des professionnels de l'immobilier, du sport et de la rénovation nous confient l'entretien de leurs locaux.</p>
+    </div>
   </div>
+  <div class="marquee reveal" aria-label="Logos de nos clients"><div class="marquee-track" id="clientTrack2"></div></div>
 </section>
 
 <!-- ============ CONTACT ============ -->
@@ -729,7 +731,7 @@ const clients = [
   {n:"Immobilière de la Hardt",img:"assets/clients/immobiliere-de-la-hardt.png",url:"https://www.immo-hardt.com/"},
   {n:"Altura Immobilier",img:"assets/clients/altura-immobilier.png",url:"https://www.alturaimmobilier.fr/"},
   {n:"EG-PRO",img:"assets/clients/eg-pro.png"},
-  {n:"Node Flow & Solutions",img:"assets/clients/node-flow.png",dark:true}
+  {n:"Node Flow & Solutions",img:"assets/clients/node-flow.png"}
 ];
 
 /* ---------- RENDER ---------- */
@@ -765,15 +767,14 @@ document.getElementById('revGrid').innerHTML = reviews.map((r,i)=>`
 
 const clientTile = (c,hidden) => {
   const img = `<img src="${c.img}" alt="${hidden?'':c.n}" loading="lazy" decoding="async">`;
-  const cls = 'client'+(c.dark?' dark':'');
+  const cls = 'client';
   return c.url
     ? `<a class="${cls}" href="${c.url}" target="_blank" rel="noopener" ${hidden?'tabindex="-1" aria-hidden="true"':`aria-label="${c.n} (nouvel onglet)"`}>${img}</a>`
     : `<div class="${cls}" ${hidden?'aria-hidden="true"':''}>${img}</div>`;
 };
 // Chaque groupe répète la liste pour dépasser la largeur d'écran ; le 2e groupe est un clone pour la boucle sans coupure.
 const clientGroup = hidden => `<div class="marquee-group"${hidden?' aria-hidden="true"':''}>${[0,1].map(k=>clients.map(c=>clientTile(c,hidden||k)).join('')).join('')}</div>`;
-document.getElementById('clientBand').innerHTML = clients.map(c=>clientTile(c,false)).join('');
-document.getElementById('clientTrack').innerHTML = clientGroup(false)+clientGroup(true);
+['clientTrack','clientTrack2'].forEach(id=>{ document.getElementById(id).innerHTML = clientGroup(false)+clientGroup(true); });
 
 /* ---------- BEFORE / AFTER SLIDER ---------- */
 document.querySelectorAll('[data-ba]').forEach(ba=>{
